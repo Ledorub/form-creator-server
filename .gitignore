@@ -1,0 +1,21 @@
+# Pycharm
+.idea/
+
+# Python
+*.py[cod]
+
+# VEnv
+.venv/
+Scripts/
+pyvenv.cfg
+
+# Django
+__pycache__
+*.sqlite3
+
+# Project
+*.rtf
+form_creator/secret.py
+
+# Packaging
+Lib/
