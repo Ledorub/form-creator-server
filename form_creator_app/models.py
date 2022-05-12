@@ -20,6 +20,9 @@ class FormField(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return f'{self.type}_{self.name}'
+
 
 class FieldChoice(models.Model):
     name = models.CharField(max_length=100)
@@ -29,19 +32,27 @@ class FieldChoice(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return f'{self.field}_choice_{self.name}'
+
 
 class Form(models.Model):
     uid = models.UUIDField(default=uuid.uuid4)
     title = models.CharField(max_length=100)
     date_created = models.DateTimeField(default=aware_utc_now)
 
+    def __str__(self):
+        return f'{self.title}'
+
 
 class FormEntry(models.Model):
+    uid = models.UUIDField(default=uuid.uuid4)
     form = models.ForeignKey(
         'Form',
         related_name='entries',
         on_delete=models.CASCADE
     )
+    data = models.JSONField()
 
 
 class FormFieldEntry(models.Model):

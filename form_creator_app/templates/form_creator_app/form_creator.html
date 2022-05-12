@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Creator</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'form_creator_app/css/form_creator.css' %}">
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'form_creator_app/js/form-creator.js' %}"></script>
+</head>
+<body>
+  <form action="{% url 'form-creator-app:form-creator'  %}" method="post" class="form-creator">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ fields_formset.management_form }}
+    <fieldset class="form-creator__fields">
+      <legend>Fields</legend>
+      {{ fields_formset.non_form_errors }}
+      {% for form in fields_formset %}
+        <div class="form-creator__field-item">
+          {{ form.non_field_errors }}
+          {{ form.as_p }}
+          {{ form.choices.management_form }}
+          <fieldset class="form-creator__field-choices">
+            <legend>Options</legend>
+            {{ form.choices.non_form_errors }}
+            {% for form in form.choices %}
+              <div class="form-creator__choice-item">
+                {{ form.non_field_errors }}
+                {{ form.as_p }}
+              </div>
+              <input type="button" value="Add option" class="form-creator__add-option-btn" />
+            {% endfor %}
+          </fieldset>
+        </div>
+        <input type="button" value="Add field" class="form-creator__add-field-btn" />
+    {% endfor %}
+    </fieldset>
+    <input type="submit" value="Create" />
+  </form>
+</body>
+</html>

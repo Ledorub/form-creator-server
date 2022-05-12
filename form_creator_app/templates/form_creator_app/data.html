@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'form_creator_app/css/data.css' %}">
+</head>
+<body>
+  <div class="data-container">
+    {% if object_list %}
+      {% for entry in object_list %}
+        <div class="data-container__item">
+          <div class="data-container__item-header">{{ entry.uid }}</div>
+          {% for k, v in entry.data.items %}
+            <div class="data-container__item-values">
+              <div class="data-container__item-key">{{ k }}</div>
+              <div class="data-container__item-value">{{ v }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% else %}
+      Nothing to see here.
+    {% endif %}
+  </div>
+</body>
+</html>

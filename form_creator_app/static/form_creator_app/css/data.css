@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.data-container {
+  width: 80%;
+}
+
+.data-container__item {
+  margin: 2% 0;
+  border-radius: 15px;
+  background-color: #ede9e8;
+  display: flex;
+  flex-direction: column;
+  padding: 1% 2%;
+}
+
+.data-container__item-header {
+  margin-bottom: 1%;
+}
+
+.data-container__item-values {
+  display: flex;
+}
+
+.data-container__item-key {
+  width: 20%;
+}
+
+.data-container__item-value {
+  display: flex;
+  width: 80%;
+}
