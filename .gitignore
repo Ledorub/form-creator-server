@@ -15,7 +15,7 @@ __pycache__
 
 # Project
 *.rtf
-form_creator/secret.py
+#form_creator/secret.py
 
 # Packaging
 Lib/
