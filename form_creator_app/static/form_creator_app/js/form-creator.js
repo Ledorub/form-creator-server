@@ -1,5 +1,3 @@
-$(document).ready(backupUnboundFormsetItems)
-
 // Remove select field's options on field type change.
 $(document).on('change', 'select', e => {
     let typeField = $(e.target)
@@ -38,7 +36,6 @@ function decFormCounter(formsetPrefix) {
     return value
 }
 
-
 function setFormCounter(formsetPrefix, value) {
     let counter = $(`#id_${formsetPrefix}-TOTAL_FORMS`)
     counter.val(value)
@@ -64,6 +61,7 @@ function getFormsetPrefix(target) {
         .split('-')[0]
 }
 
+// Handles form field and field option addition.
 $(document).on('click', '.form-creator', e => {
     let target = $(e.target)
     let isAddField = target.is('[class*="form-creator__add-field-btn"]')
@@ -100,7 +98,6 @@ function addField() {
     lastField.after(newField)
 }
 
-
 function addChoice(target) {
     let lastField = target.closest('fieldset')
         .find('[class*="form-creator__choice-item"]:last')
@@ -114,7 +111,6 @@ function addChoice(target) {
     resetItemValues(newField)
     lastField.after(newField)
 }
-
 
 function updateFieldIndices(field, prefix, newIdx) {
     let pattern = RegExp(`(${prefix}[-_])\\d*`)
