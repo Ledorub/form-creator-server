@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://form-creator-server-app.herokuapp.com/form-creator/create-form/'
+    'https://form-creator-server-app.herokuapp.com/',
     'localhost',
     '127.0.0.1'
 ]
