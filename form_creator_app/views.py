@@ -14,6 +14,9 @@ from form_creator_app.json_rpc import Dispatcher, RPCRequest
 
 
 class FormCreatorView(CreateView):
+    """
+    Renders form to construct another form.
+    """
     model = models.Form
     form_class = forms.FormModelForm
     template_name = 'form_creator_app/form_creator.html'
@@ -47,10 +50,17 @@ class FormCreatorView(CreateView):
 
 
 def form_created_view(request, form_uid):
+    """
+    Renders a form_uid of newly created form.
+    Used as a success url for form creator.
+    """
     return HttpResponse(f'FORM_UID: {form_uid}')
 
 
 class FormDataListView(ListView):
+    """
+    Renders all data related to a given form (form_uid).
+    """
     model = models.FormEntry
     template_name = 'form_creator_app/data.html'
 
@@ -59,6 +69,10 @@ class FormDataListView(ListView):
 
 
 def json_rpc_decorator(view):
+    """
+    Extracts JSONRPC request data to RPCRequest object.
+    Wraps view response into RPCResponse object.
+    """
     @wraps(view)
     def wrapper(request, *args, **kwargs):
         request_data = json.loads(request.body)
@@ -73,6 +87,9 @@ def json_rpc_decorator(view):
 
 
 class FormView(views.View):
+    """
+    Handles RPC API calls.
+    """
     form_compiler = forms.FormCompiler
 
     def __init__(self, *args, **kwargs):
@@ -100,6 +117,9 @@ class FormView(views.View):
 
 
 class JSONRPCMethods:
+    """
+    Just a collection of supported JSONRPC methods.
+    """
     @staticmethod
     def _prepare_result(ok, context=None, template=None):
         result = {
@@ -113,6 +133,13 @@ class JSONRPCMethods:
 
     @staticmethod
     def get_form(form_uid):
+        """
+        Builds a form for a given UID.
+        :param form_uid:
+        :type form_uid:
+        :return:
+        :rtype:
+        """
         definition = models.Form.objects.get(uid=form_uid)
         form = forms.FormCompiler(definition).compile_form()
         context = {'title': definition.title, 'form': form()}
@@ -122,6 +149,9 @@ class JSONRPCMethods:
 
     @staticmethod
     def post_form(**kwargs):
+        """
+        Handles form filling process.
+        """
         template_name = 'form_creator_app/form.html'
         form_uid = kwargs.get('form_uid')
         form_data = kwargs.get('form_data')
@@ -141,6 +171,9 @@ class JSONRPCMethods:
 
     @staticmethod
     def get_form_data(**kwargs):
+        """
+        Returns all data entries obtained by form UID.
+        """
         form_uid = kwargs.get('form_uid')
         form_entries = models.Form.objects.get(uid=form_uid).entries.all()
         data = [{'uid': entry[0], 'data': entry[1]}
@@ -150,6 +183,9 @@ class JSONRPCMethods:
 
 
 def register_jsonrpc_methods():
+    """
+    Registers RPC methods in dispatcher by their function names.
+    """
     methods = [
         JSONRPCMethods.get_form,
         JSONRPCMethods.post_form,

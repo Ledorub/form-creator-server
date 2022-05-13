@@ -5,6 +5,10 @@ from form_creator_app.utils import aware_utc_now
 
 
 class FormField(models.Model):
+    """
+    Represents form field of on of the following type:
+    input[text], textarea, select
+    """
     TYPE_CHOICES = (
         ('input', 'Input'),
         ('textarea', 'Textarea'),
@@ -25,6 +29,9 @@ class FormField(models.Model):
 
 
 class FieldChoice(models.Model):
+    """
+    Represents options for select field.
+    """
     name = models.CharField(max_length=100)
     field = models.ForeignKey(
         'FormField',
@@ -37,6 +44,9 @@ class FieldChoice(models.Model):
 
 
 class Form(models.Model):
+    """
+    Stores data required to build a form.
+    """
     uid = models.UUIDField(default=uuid.uuid4)
     title = models.CharField(max_length=100)
     date_created = models.DateTimeField(default=aware_utc_now)
@@ -46,6 +56,9 @@ class Form(models.Model):
 
 
 class FormEntry(models.Model):
+    """
+    Data related to dynamically built form.
+    """
     uid = models.UUIDField(default=uuid.uuid4)
     form = models.ForeignKey(
         'Form',

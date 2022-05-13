@@ -30,6 +30,9 @@ class JSONRPCMethodError(JSONRPCError):
 
 
 class RPCMessage:
+    """
+    Generic JSON RPC payload representation.
+    """
     _keys = tuple()
 
     def __init__(self, **kwargs):
@@ -47,6 +50,9 @@ class RPCMessage:
 
 
 class RPCRequest(RPCMessage):
+    """
+    Representation of an JSON RPC request.
+    """
     _keys = ('jsonrpc', 'id', 'method', 'params')
 
     def __init__(self, **kwargs):
@@ -66,12 +72,18 @@ class RPCRequest(RPCMessage):
             self.id = _id
 
     def prepare_response(self, **kwargs):
+        """
+        Wraps response data into JSON RPC message with the same id as a request.
+        """
         if not self.id:
             raise JSONRPCError('Can\'t respond to notification.')
         return RPCResponse(jsonrpc=self.jsonrpc, id=self.id, **kwargs)
 
 
 class RPCResponse(RPCMessage):
+    """
+    Representation of an JSON RPC response.
+    """
     _keys = ('jsonrpc', 'id', 'result', 'error')
 
     def __init__(self, **kwargs):
@@ -93,6 +105,9 @@ class RPCResponse(RPCMessage):
 
 
 class JSONRPCClient:
+    """
+    Simple JSON RPC wrapper to call remote procedures.
+    """
     JSON_RPC_VERSION = '2.0'
     request_id = 0
 
@@ -115,6 +130,9 @@ class JSONRPCClient:
 
 
 class Dispatcher:
+    """
+    Chooses appropriate RPC method and handles errors during method call.
+    """
     _methods = {}
 
     def register(self, f, name):

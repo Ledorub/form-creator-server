@@ -37,6 +37,9 @@ class FieldChoiceModelForm(forms.ModelForm):
 
 
 class SelectOptionRequiredInlineFormset(BaseInlineFormSet):
+    """
+    Formset that checks that at least one option was provided to select.
+    """
     def clean(self):
         field_type = self.instance.type
         if field_type == 'select' and not self.has_changed():
@@ -44,12 +47,15 @@ class SelectOptionRequiredInlineFormset(BaseInlineFormSet):
 
 
 class BaseFieldFormset(BaseInlineFormSet):
+    """
+    Handles saving of fields and corresponding choices.
+    """
     def add_fields(self, form, index):
         super().add_fields(form, index)
         try:
-            instance = self.get_queryset()[index]  # TODO: Use .queryset?
+            instance = self.get_queryset()[index]
         except IndexError:
-            instance = None  # TODO: Check block required: instance doesn't have pk sometimes?
+            instance = None
 
         form.choices = FieldChoiceInlineFormset(
             data=self.data or None,
@@ -115,6 +121,10 @@ class FormEntryForm(forms.ModelForm):
 
 
 class FormCompiler:
+    """
+    Dynamically builds a form
+    from given description/blueprint (models.Form instance).
+    """
     def __init__(self, blueprint):
         self.blueprint = blueprint
         self.attrs = {
