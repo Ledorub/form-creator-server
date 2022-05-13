@@ -53,11 +53,3 @@ class FormEntry(models.Model):
         on_delete=models.CASCADE
     )
     data = models.JSONField()
-
-
-class FormFieldEntry(models.Model):
-    field = models.ForeignKey(
-        'FormField',
-        related_name='entries',
-        on_delete=models.CASCADE
-    )
