@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://form-creator-server-app.herokuapp.com/',
-    'localhost',
-    '127.0.0.1'
+    'https://form-creator-server-app.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
 ]
 
 
@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'form_creator_app.apps.FormCreatorAppConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -130,6 +132,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    'https://form-creator-server-app.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://form-creator-server-app.herokuapp.com'
+]
+
 
 import django_heroku
 django_heroku.settings(locals())
