@@ -47,7 +47,7 @@ class FormCreatorView(CreateView):
 
 
 def form_created_view(request, form_uid):
-    return HttpResponse(form_uid)
+    return HttpResponse(f'FORM_UID: {form_uid}')
 
 
 class FormDataListView(ListView):
