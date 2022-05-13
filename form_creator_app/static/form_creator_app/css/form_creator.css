@@ -3,3 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.form-creator__field-choices {
+    display: none;
+}
