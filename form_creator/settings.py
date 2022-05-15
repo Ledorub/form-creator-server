@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import form_creator.secret as secret
 
@@ -22,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-*d9--q-8r2$0mg$tv#q0ltl-+f=ix7y2r^8g7qbb%i9w28c&zf'
+
+PORT = os.getenv('PORT', 8000)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
