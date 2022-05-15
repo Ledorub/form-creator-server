@@ -1,6 +1,6 @@
 @import "base.css";
 
-body {
+#content {
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -14,18 +14,18 @@ label[for="form-uid-input"] {
 
 .anchor-btn {
   border-radius: 100px;
-  padding: 0.9% 5%;
+  padding: 3% 16%;
   text-decoration: none;
 }
 
 .spacing-text {
-  margin: 1% 0;
+  margin: 3% 0;
 }
 
 .search {
   display: flex;
   justify-content: center;
-  min-width: 30%;
+  width: 100%;
 }
 
 .search__bar {

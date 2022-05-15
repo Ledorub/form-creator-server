@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Form Creator App</title>
+  <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
   <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   {% block extraLinks %}{% endblock %}
 </head>
 <body>
-{% block content %}{% endblock %}
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
 </body>
 </html>

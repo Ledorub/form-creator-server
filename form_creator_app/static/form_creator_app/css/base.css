@@ -4,4 +4,17 @@ body {
     font-family: Helvetica, sans-serif;
     line-height: 1;
     font-size: 1.2rem;
+    touch-action: none;
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    width: 30%;
+}
+
+@media only screen and (max-width: 400px) {
+  #content {
+    width: 85%;
+  }
 }
