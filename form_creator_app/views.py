@@ -14,7 +14,7 @@ from form_creator_app.json_rpc import Dispatcher, RPCRequest
 
 
 class MainView(views.View):
-    template_name = 'form_creator_app/main.html'
+    template_name = 'form_creator_app/home.html'
 
     def get(self, request):
         return render(request, self.template_name)
