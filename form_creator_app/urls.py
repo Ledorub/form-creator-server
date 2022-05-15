@@ -5,6 +5,11 @@ from form_creator_app.apps import APP_NAME
 app_name = APP_NAME
 urlpatterns = [
     path(
+        '',
+        views.MainView.as_view(),
+        name='main'
+    ),
+    path(
         'create/',
         views.FormCreatorView.as_view(
             success_url=reverse_lazy('form_creator_app:created')),

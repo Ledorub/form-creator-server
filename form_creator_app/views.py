@@ -1,6 +1,6 @@
 import json
 from functools import wraps
-from django.shortcuts import HttpResponse, reverse
+from django.shortcuts import HttpResponse, reverse, render, redirect
 from django import views
 from django.http import JsonResponse
 from django.db import transaction
@@ -11,6 +11,20 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from form_creator_app import forms, models
 from form_creator_app.json_rpc import Dispatcher, RPCRequest
+
+
+class MainView(views.View):
+    template_name = 'form_creator_app/main.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        form_uid = request.POST.get('form_uid', None)
+        if not form_uid:
+            return redirect(self.request.get_full_path())
+        kwargs = {'form_uid': form_uid}
+        return redirect(reverse('form-creator-app:data-list', kwargs=kwargs))
 
 
 class FormCreatorView(CreateView):
