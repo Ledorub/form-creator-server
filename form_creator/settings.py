@@ -32,8 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'https://form-creator-server-app.herokuapp.com',
     'https://form-creator-client-app.herokuapp.com'
-    'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://localhost',
+    'http://127.0.0.1'
 ]
 
 
@@ -142,8 +142,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'https://form-creator-server-app.herokuapp.com',
     'https://form-creator-client-app.herokuapp.com',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://localhost',
+    'http://127.0.0.1'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
