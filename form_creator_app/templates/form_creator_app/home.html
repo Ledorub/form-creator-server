@@ -1,14 +1,14 @@
+{% extends "form_creator_app/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Form Creator App</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'form_creator_app/css/home.css' %}">
-</head>
-<body>
-  <a href="{% url 'form-creator-app:form-creator' %}" class="btn anchor-btn">Create Form</a>
+
+{% block extraLinks %}
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'form_creator_app/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+  <a href="{% url 'form-creator-app:form-creator' %}" class="btn anchor-btn">Create
+    Form</a>
   <p class="spacing-text">or find submitted data</p>
   <form method="post" class="search">
     {% csrf_token %}
@@ -19,5 +19,4 @@
       <input class="search__submit btn fa" type="Submit" value="&#xf002" />
     </div>
   </form>
-</body>
-</html>
+{% endblock %}
