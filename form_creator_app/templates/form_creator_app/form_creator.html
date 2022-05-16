@@ -1,17 +1,12 @@
+{% extends 'form_creator_app/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Form Creator</title>
+
+{% block extra-links %}
   <link rel="stylesheet" type="text/css" href="{% static 'form_creator_app/css/form_creator.css' %}">
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static 'form_creator_app/js/form-creator.js' %}"></script>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <form action="{% url 'form-creator-app:form-creator'  %}" method="post" class="form-creator">
     {% csrf_token %}
     {{ form.as_p }}
@@ -32,14 +27,13 @@
                 {{ form.non_field_errors }}
                 {{ form.as_p }}
               </div>
-              <input type="button" value="Add option" class="form-creator__add-option-btn" />
+              <input type="button" value="Add option" class="form-creator__add-option-btn btn rounded" />
             {% endfor %}
           </fieldset>
         </div>
-        <input type="button" value="Add field" class="form-creator__add-field-btn" />
+        <input type="button" value="Add field" class="form-creator__add-field-btn btn rounded" />
     {% endfor %}
     </fieldset>
-    <input type="submit" value="Create" />
+    <input class="form-creator__submit-btn btn rounded" type="submit" value="Create" />
   </form>
-</body>
-</html>
+{% endblock %}

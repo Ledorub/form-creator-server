@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 90vh;
 }
 
 label[for="form-uid-input"] {
@@ -12,9 +13,7 @@ label[for="form-uid-input"] {
 }
 
 .anchor-btn {
-  border-radius: 100px;
   padding: 3% 16%;
-  text-decoration: none;
 }
 
 .spacing-text {
@@ -34,15 +33,9 @@ label[for="form-uid-input"] {
 
 .search__input {
   width: 90%;
-  outline: none;
   border: 1px solid grey;
   border-radius: 100px 0 0 100px;
   padding: 2% 5%;
-  text-align: center;
-}
-
-.search__input:focus {
-  outline: 1px inset var(--accent-color);
 }
 
 .search__submit {
@@ -51,14 +44,4 @@ label[for="form-uid-input"] {
   appearance: none;
   border: none;
   border-radius: 0 100px 100px 0;
-}
-
-.btn {
-  background-color: var(--accent-color);
-  color: white;
-  cursor: pointer;
-}
-
-.btn:hover {
-  opacity: 0.9;
 }

@@ -1,9 +1,59 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import "base.css";
+
+#content {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+p {
+    margin: 2% 0;
+    display: flex;
+    align-items: center;
+}
+
+p > label {
+    width: 40%;
+}
+
+p > label ~ * {
+    width: 60%;
+    border-radius: 18px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+form > p {
+    margin-bottom: 10%;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    margin: 0 auto 3% auto;
 }
 
 .form-creator__field-choices {
     display: none;
+}
+
+.btn {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+}
+
+.form-creator__fields {
+    margin-bottom: 3%;
 }

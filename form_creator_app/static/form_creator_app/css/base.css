@@ -17,11 +17,15 @@ body {
 }
 
 header {
+    position: fixed;
+    top: 0;
     height: 10vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    background-color: white;
 }
 
 .fa-home {
@@ -32,17 +36,62 @@ header {
 
 #content {
     width: 30vw;
-    height: 90vh;
+    position: relative;
+    top: 10vh;
+    padding: 2% 0;
 }
 
 input {
+    border: 1px solid grey;
+}
+
+input,
+select {
     font-family: inherit;
     font-size: inherit;
     letter-spacing: inherit;
+    outline: none;
+    text-align: center;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent-color);
+}
+
+select {
+    line-height: inherit;
+    font-size: inherit;
+}
+
+option {
+    text-align: center;
+}
+
+.form-creator__field-item {
+    margin-bottom: 8%;
+}
+
+
+.btn {
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    appearance: none;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.rounded {
+    border-radius: 100px;
 }
 
 @media only screen and (max-width: 400px) {
-  #content {
-    width: 85vw;
-  }
+    #content {
+        width: 85vw;
+    }
 }

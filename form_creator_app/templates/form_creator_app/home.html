@@ -1,13 +1,13 @@
 {% extends "form_creator_app/base.html" %}
 {% load static %}
 
-{% block extraLinks %}
+{% block extra-links %}
   <link rel="stylesheet" type="text/css"
         href="{% static 'form_creator_app/css/home.css' %}">
 {% endblock %}
 
 {% block content %}
-  <a href="{% url 'form-creator-app:form-creator' %}" class="btn anchor-btn">Create
+  <a href="{% url 'form-creator-app:form-creator' %}" class="btn rounded anchor-btn">Create
     Form</a>
   <p class="spacing-text">or find submitted data</p>
   <form method="post" class="search">
