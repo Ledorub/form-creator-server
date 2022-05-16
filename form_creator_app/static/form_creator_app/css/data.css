@@ -4,17 +4,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80vw;
 }
 
 .data-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .data-container__item {
-  margin: 2% 0;
+  width: 100%;
+  margin: 1% 0;
   border-radius: 15px;
   border: 1px solid var(--accent-color);
   display: flex;
@@ -32,6 +35,7 @@
 
 .data-container__item-key {
   width: 20%;
+  color: var(--accent-color);
 }
 
 .data-container__item-value {
