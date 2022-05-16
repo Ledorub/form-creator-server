@@ -1,0 +1,12 @@
+@import "base.css";
+
+#content {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+}
+
+span {
+    color: var(--accent-color);
+    white-space: pre-wrap;
+}

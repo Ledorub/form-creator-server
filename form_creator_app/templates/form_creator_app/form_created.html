@@ -1,0 +1,10 @@
+{% extends 'form_creator_app/base.html' %}
+{% load static %}
+
+{% block extra-links %}
+  <link rel="stylesheet" type="text/css" href="{% static 'form_creator_app/css/form_created.css' %}">
+{% endblock %}
+
+{% block content %}
+  <span>Form UID: </span>{{ form_uid }}
+{% endblock %}

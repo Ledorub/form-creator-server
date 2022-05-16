@@ -68,7 +68,8 @@ def form_created_view(request, form_uid):
     Renders a form_uid of newly created form.
     Used as a success url for form creator.
     """
-    return HttpResponse(f'FORM_UID: {form_uid}')
+    template_name = 'form_creator_app/form_created.html'
+    return render(request, template_name, {'form_uid': form_uid})
 
 
 class FormDataListView(ListView):
