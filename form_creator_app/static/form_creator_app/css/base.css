@@ -1,20 +1,48 @@
 @import "reset.css";
 
+:root {
+    --accent-color: #318ce7;
+}
+
 body {
     font-family: Helvetica, sans-serif;
     line-height: 1;
     font-size: 1.2rem;
     touch-action: none;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    letter-spacing: 0.1em;
+}
+
+header {
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-home {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 2em;
 }
 
 #content {
-    width: 30%;
+    width: 30vw;
+    height: 90vh;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
 }
 
 @media only screen and (max-width: 400px) {
   #content {
-    width: 85%;
+    width: 85vw;
   }
 }
