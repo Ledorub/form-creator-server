@@ -1,6 +1,6 @@
 # form-creator-server
 
-An app for createing simple forms.
+An app for creating simple forms.
 
 Endpoints:
 - `/` - home page;
